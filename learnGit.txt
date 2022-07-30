@@ -4,4 +4,14 @@
 3. touch readme.txt
 4. git add readme.txt
 5. git commit -m "add 1 file " 
+6. git log // you can use --pretty=oneline
+7. git status 
+8. git diff
+9. git reset --hard <version>  //use HEAD^ or HEAD~100 balabala
+10.
+
+
+
+
+
 
