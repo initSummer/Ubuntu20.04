@@ -3,4 +3,5 @@
 //you will find there is a new dir named .git, which is trace the version data 
 3. touch readme.txt
 4. git add readme.txt
-5. 
+5. git commit -m "add 1 file " 
+
