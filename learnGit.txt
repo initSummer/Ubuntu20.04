@@ -11,7 +11,10 @@
 // or use version number directly
 10. git reflog
 
+11. git checkout -- <filename>
+12. git reset HEAD <filename>
 
+13. git rm <filename>
 
 
 
