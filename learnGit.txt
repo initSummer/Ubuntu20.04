@@ -8,7 +8,8 @@
 7. git status 
 8. git diff
 9. git reset --hard <version>  //use HEAD^ or HEAD~100 balabala
-10.
+// or use version number directly
+10. git reflog
 
 
 
