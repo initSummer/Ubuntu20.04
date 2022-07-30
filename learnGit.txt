@@ -1,0 +1,6 @@
+1. mkdir learnGit
+2. git init //change this dir into a store that git can manage 
+//you will find there is a new dir named .git, which is trace the version data 
+3. touch readme.txt
+4. git add readme.txt
+5. 
