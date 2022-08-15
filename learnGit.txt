@@ -16,6 +16,3 @@
 
 13. git rm <filename>
 
-
-
-
