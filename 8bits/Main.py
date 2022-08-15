@@ -1,5 +1,5 @@
-# from summerClassEdge import *
-# from summerClassNetwork import *
+# how to graphical
+
 from summerNetwork_h import *
 if __name__ == "__main__":
     V = [1, 2, 3, 4, 5, 6]

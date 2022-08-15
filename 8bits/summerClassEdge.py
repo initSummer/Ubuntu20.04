@@ -1,4 +1,4 @@
-print("class Edge Imported")
+print("class Edge is Imported")
 class Edge():
     ''' edge in flownet '''
     def  __init__(self, v:int, w:int, cap:int, flow = 0):
@@ -26,9 +26,9 @@ class Edge():
 
     def residual_cap_to(self, p):
         '''
-        calculate the 剩余容量 of edge
-        :return: 剩余容量 of v_to_w if p = w
-        :return: 剩余容量 of w_to_v if p = v
+        calculate the remaningCap of edge
+        :return: remaningCap of v_to_w if p = w
+        :return: remaningCap of w_to_v if p = v
         '''
         return self.cap - self.flow if p == self.w else self.flow
 

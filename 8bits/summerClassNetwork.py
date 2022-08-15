@@ -1,4 +1,4 @@
-print("class Network Imported")
+print("class Network is Imported")
 class Network():
     ''' st-net '''
     def __init__(self, V:list, E:list, s:int, t:int):
