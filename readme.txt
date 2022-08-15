@@ -10,5 +10,3 @@ Tomorrow
 3. 掌握并用python实现一种最小割算法
 4. 阅读代码规范，明确结构
 #Tomorrow4选作
-Hello
-Hello3
