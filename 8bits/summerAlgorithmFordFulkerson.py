@@ -113,16 +113,38 @@ class FordFulkerson():
             while node.parent != -1:
                 w, e = node.w, node.e
                 e.moddify_flow(w,bottle) # 会不会造成flow>cap?
+                                            # 不会，flow+residualCap = Cap
+                                            # 所以，计算完成后一定会有边flow=Cap
+                                            # （除非Cap极大，大于设置的初始bottle）
+                                            # 而其他边flow<Cap
 
                 node = node.parent
 
             # now, flow_of_net is plused by Bottle
             self.max_flow += bottle
 
-    def display(self):
+    def min_st_cut(self):
+        X = [self.G.s]
+        stack = [self.G.s]
+        while len(stack) > 0:
+            v = stack.pop() # 为什么上面用queue，这里用stack？可以用queue（stack）吗？
+            for e in self.G.get_from_edges(v):
+                if e.w != self.G.t and e.w not in X and e.residual_cap_to(e.w) > 0:
+                    X.append(e.w)
+                    stack.append(e.w)
+        Y = list(set(self.G.V)-set(X))
+        st_cut = [e for e in self.G.E if e.v in X and e.w in Y]
+        return X, Y, st_cut
+
+    def display_max_flow(self):
 
         print("MaxFlowNetwork = ", self.max_flow)
         print('%-10s%-10s%-8s' % ("edge", "cap", "flow"))
         for e in self.G.E:
             print('%-10s%-10d%-8s' %
                     (e, e.cap, e.flow if e.flow<e.cap else str(e.flow)+"*"))
+
+    def display_st_cut(self, X, Y, st_cut):
+        print('X={0}, Y={1}'.format(X, Y))
+        print ('st-cut={}'.format([str(e) for e in st_cut]))
+

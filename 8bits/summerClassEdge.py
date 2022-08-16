@@ -13,11 +13,11 @@ class Edge():
         self.cap, self.flow = cap, flow
 
     def is_from(self, v):
-        ''' 是否是v顶点的流入边 '''
+        ''' 是否是v顶点的流出边 '''
         return self.v == v
 
     def is_to(self, v):
-        ''' 是否是v顶点的流出边 '''
+        ''' 是否是v顶点的流入边 '''
         return self.w == v
 
     def other_node(self, p):
