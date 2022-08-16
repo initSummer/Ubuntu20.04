@@ -24,11 +24,18 @@ class Edge():
         ''' return the other node 1 of two node of edge '''
         return self.v if p == self.w else self.w
 
-    def residual_cap_to(self, p):
+    def residual_cap_to(self, p):#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         '''
         calculate the remaningCap of edge
         :return: remaningCap of v_to_w if p = w
         :return: remaningCap of w_to_v if p = v
+        '''
+        ''' 仅仅是一种表达方式
+        以from或者to节点作为“标志”
+        如果传入的参数是from节点
+        那么返回红色边流量（逆向边，流量边）
+        如果传入的参数是to节点
+        那么返回蓝色边流量（同向边，剩余容量边)
         '''
         return self.cap - self.flow if p == self.w else self.flow
 
