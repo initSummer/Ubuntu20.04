@@ -16,8 +16,4 @@ def main():
     ffks.display_max_flow()
     X, Y, st_cut = ffks.min_st_cut()
     ffks.display_st_cut(X, Y, st_cut)
-
-
-
-if __name__ == "__main__":
     main()
