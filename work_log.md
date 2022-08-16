@@ -29,3 +29,5 @@ Tue 16 Aug 2022 02:15:30 PM CST Summer
 4. To 17:46
 关于c++代码规范
 	列出了目录，与WangTianxing讨论分工与形式 
+Tomorrow
+1. 读论文
