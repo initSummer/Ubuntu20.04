@@ -1,0 +1,23 @@
+名词术语
+1. DAG:directed acyclic graph
+2. PI primary input node, has no incoming edge
+3. PO primary output node, has no outcoming edge
+4. input(v): fanins of gate v
+5. input(H): DISTINCT nodes outside H supplying inputs to the gate in H
+6. Cv: a K-feasible cone at v, a subgraph consisting of v and its predecessors, and |input(Cv)| <= K, and any path connecting a node in Cv and v lies entirely in Cv.
+7. level of v: length of the longest path from any PI to v
+8. depth of a network: the largest node level in the network
+9. K-bounded: a boolean network is K-bounded if |input(v)| <= K for each node v.
+10. cut(X,!X), a partition of the nodes in V(N) such that s belongs to X and t belongs to !X.
+11. n(X,!X), the node cut-size of X!X, the number of nodes in X adjacent to some node in !X.
+12. K-feasible: a cut X!X is k-feasible if n(X,!X) < K
+13. e(X,!X), the edge cut-size of X!X, sum of cap of the forward edges crossing the cut.
+14. vol(X,!X), the volume of X!X, vol(X,!X) = |!X|
+15. h(X,!X), the height of cut, maximum label in X
+
+
+重点
+1. we allow these cones to overlap
+2. assume Cap of anyedge is ONE
+3. the algorithm applicable to any K-bounded Boolean network, if is not k-b, use DMIG to transfer
+
