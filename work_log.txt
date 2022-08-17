@@ -32,3 +32,11 @@ Tue 16 Aug 2022 02:15:30 PM CST Summer
 Tomorrow
 1. 读懂TopSorting代码细节
 2. 读论文
+
+Wed 17 Aug 2022 09:15:51 AM CST Summer
+---------------------" 设置每日工作内容文件头格式
+工作内容：
+
+环境配置：
+1. 翻译工具translate-shell,shell命令行翻译
+明天计划：
