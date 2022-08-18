@@ -17,6 +17,7 @@ class FordFulkerson():
     def __init__(self):
         self.G = None
         self.max_flow = 0 #如果传入的网络中流不是0，还能正确计算吗？
+                            #如果网络流合法，那么可以
 
     def get_network(self, G:Network):
         self.G = G

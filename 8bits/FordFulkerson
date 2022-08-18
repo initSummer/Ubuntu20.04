@@ -1,7 +1,7 @@
 begin
 	mark_1
 	is there any augmenting path in remaining net?
-		find bottom of this augmenting path
+		find bottle of this augmenting path
 		modify rmnNet according to Bottom
 		goto mark_1
 	else
