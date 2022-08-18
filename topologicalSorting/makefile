@@ -4,5 +4,7 @@ topologicalSorting.o:topologicalSorting.cc
 	g++ -c topologicalSorting.cc
 main.o:main.cc
 	g++ -c main.cc
-clean:
-	rm topologicalSorting.o main.o
+clean: 
+	-rm *.o *.h.gch
+do:
+	./topologicalSorting.out
