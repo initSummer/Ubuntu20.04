@@ -99,7 +99,7 @@ class FordFulkerson():
                 break
 
             ''' Step 2. calculate how much to modify as Bottle '''
-            bottle = 10000
+            bottle = 100000
             node = path
             while node.parent != -1:
                 w, e = node.w, node.e
