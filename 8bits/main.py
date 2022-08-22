@@ -1,8 +1,10 @@
 # how to graphical
 from summerNetwork_h import *
 import numpy
+import time
+T1 = time.time()
 def StrctNode(a):
-    return numpy.linspace(0,a-1,a)
+    return numpy.linspace(0,a-1,a,dtype=int)
 
 def main():
     # V = [0, 1, 2, 3, 4, 5, 6, 7, 8, ]
@@ -30,8 +32,11 @@ def main():
     ffks.get_network(G)
     ffks.start()
     ffks.display_max_flow()
-    X, Y, st_cut = ffks.min_st_cut()
-    ffks.display_st_cut(X, Y, st_cut)
+    ffks.min_st_cut()
+    ffks.display_st_cut()
+   # ffks.plot()
 
 if __name__== '__main__':
     main()
+    T2 = time.time()
+    print(' 程序运行时间：%.6s毫秒 ' % ((T2 - T1)*1000))

@@ -18,6 +18,10 @@ class FordFulkerson():
         self.G = None
         self.max_flow = 0 #如果传入的网络中流不是0，还能正确计算吗？
                             #如果网络流合法，那么可以
+        self.X = None
+        self.Y = None
+        self.forword_cut_edge = [] 
+        self.reverse_cut_edge = [] 
 
     def get_network(self, G:Network):
         self.G = G
@@ -125,17 +129,27 @@ class FordFulkerson():
             self.max_flow += bottle
 
     def min_st_cut(self):
-        X = [self.G.s]
-        stack = [self.G.s]
-        while len(stack) > 0:
-            v = stack.pop() # 为什么上面用queue，这里用stack？可以用queue（stack）吗？
-            for e in self.G.get_from_edges(v):
-                if e.w != self.G.t and e.w not in X and e.residual_cap_to(e.w) > 0:
-                    X.append(e.w)
-                    stack.append(e.w)
-        Y = list(set(self.G.V)-set(X))
-        st_cut = [e for e in self.G.E if e.v in X and e.w in Y]
-        return X, Y, st_cut
+        self.X = [self.G.s]
+        queue = Queue()
+        queue.put(self.G.s)
+        while not queue.empty():
+            node = queue.get() # 为什么上面用queue，这里用stack？可以用queue（stack）吗？
+                                # 随便
+            for e in self.G.get_from_edges(node):
+                if e.w != self.G.t and e.w not in self.X and e.residual_cap_to(e.w) > 0:
+                    self.X.append(e.w)
+                    queue.put(e.w)
+            for e in self.G.get_to_edges(node):
+                if e.v not in self.X and e.residual_cap_to(node) > 0:
+                    self.X.append(e.v)
+                    queue.put(e.v)
+        self.Y = list(set(self.G.V)-set(self.X))
+        self.X.sort()
+        self.Y.sort()
+
+        self.forword_cut_edge = [e for e in self.G.E if e.v in self.X and e.w in self.Y]
+        self.reverse_cut_edge = [e for e in self.G.E if e.v in self.Y and e.w in self.X]
+        return self.X, self.Y, self.forword_cut_edge, self.reverse_cut_edge
 
     def display_max_flow(self):
 
@@ -145,7 +159,27 @@ class FordFulkerson():
             print('%-10s%-10d%-8s' %
                     (e, e.cap, e.flow if e.flow<e.cap else str(e.flow)+"*"))
 
-    def display_st_cut(self, X, Y, st_cut):
-        print('X={0}, Y={1}'.format(X, Y))
-        print ('st-cut={}'.format([str(e) for e in st_cut]))
+    def display_st_cut(self):
+        print('X={0}, !X={1}'.format(self.X, self.Y))
+        print ('forword cut edge ={}'.format([str(e) for e in self.forword_cut_edge]))
+        print ('reverse cut edge ={}'.format([str(e) for e in self.reverse_cut_edge]))
 
+    def plot(self):
+        start = []
+        to = []
+        flow = []
+        for e in self.G.E:
+            if e.flow != 0:
+                start.append(e.v)
+                to.append(e.w)
+                flow.append(e.flow)
+        g_plot = nx.DiGraph()
+        for i in range(0, len(start)):
+            g_plot.add_weighted_edges_from([(start[i], to[i], flow[i])])
+        nx.draw(g_plot,
+                with_labels=True, 
+                pos=nx.spring_layout(g_plot),
+                width=[float(v['weight']) for (r,c,v) in g_plot.edges(data=True)])
+        ax = matplotlib.pyplot.gca()
+        ax.set_axis_off()
+        matplotlib.pyplot.show()
